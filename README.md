@@ -62,9 +62,6 @@ npm run dev
 rust-compile-web/
 ├── backend/          # Rust 后端服务
 ├── frontend/         # Vue3 前端应用
-├── docker-compose.yml
-├── start.sh
-└── dev.sh
 ```
 
 
