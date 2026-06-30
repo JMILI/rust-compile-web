@@ -68,3 +68,17 @@ rust-compile-web/
 访问应用：
 - 前端界面: http://localhost:5173
 - 后端 API: http://localhost:8080
+
+## 部署到 Vercel
+
+前端可像 `cPlusBook` 一样部署到 Vercel；**后端需单独部署**（需 nightly rustc，Vercel 无法运行）。
+
+详见 **[DEPLOY.md](./DEPLOY.md)**。
+
+快速步骤：
+
+1. Vercel 导入仓库，Root Directory 指向本项目
+2. 使用仓库内 `vercel.json` + `build.sh`（已配置）
+3. 将 `backend/` 部署到 Railway / Fly.io（见 `backend/Dockerfile`）
+4. 在 Vercel 设置环境变量 `VITE_API_BASE_URL=https://你的后端/api`
+5. Redeploy 前端

@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "buildCommand": "chmod +x build.sh && ./build.sh",
+  "outputDirectory": "frontend/dist",
+  "installCommand": "",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

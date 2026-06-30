@@ -58,9 +58,15 @@ async fn main() -> std::io::Result<()> {
     // 共享应用状态
     let app_state = web::Data::new(AppState {});
 
-    // 启动 HTTP 服务器
-    info!("Server listening on http://127.0.0.1:8080");
-    info!("Open http://127.0.0.1:5173 in browser to access frontend");
+    let host = std::env::var("HOST").unwrap_or_else(|_| "0.0.0.0".to_string());
+    let port: u16 = std::env::var("PORT")
+        .ok()
+        .and_then(|p| p.parse().ok())
+        .unwrap_or(8080);
+    let bind_addr = format!("{host}:{port}");
+
+    info!("Server listening on http://{bind_addr}");
+    info!("Open frontend (local dev) at http://127.0.0.1:5173");
 
     HttpServer::new(move || {
         // 配置 CORS 以允许前端访问
@@ -78,7 +84,7 @@ async fn main() -> std::io::Result<()> {
             .route("/api/stages", web::get().to(api::list_stages))
             .route("/api/version", web::get().to(api::rust_version))
     })
-        .bind("127.0.0.1:8080")?
+        .bind(bind_addr.clone())?
         .run()
         .await
 }
