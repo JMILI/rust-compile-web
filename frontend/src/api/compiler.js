@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-// 生产环境在 Vercel 设置 VITE_API_BASE_URL；开发环境走 vite proxy /api
-const API_BASE_URL =
-    import.meta.env.VITE_API_BASE_URL ||
-    (import.meta.env.DEV ? 'http://127.0.0.1:8080/api' : '/api')
+// 开发/隧道访问走 Vite 同源代理 /api，避免浏览器请求 127.0.0.1
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
 
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
