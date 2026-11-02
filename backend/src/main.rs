@@ -66,7 +66,7 @@ async fn main() -> std::io::Result<()> {
     let bind_addr = format!("{host}:{port}");
 
     info!("Server listening on http://{bind_addr}");
-    info!("Open frontend (local dev) at http://127.0.0.1:5173");
+    info!("Open frontend (local dev) at http://127.0.0.1:5175");
 
     HttpServer::new(move || {
         // 配置 CORS 以允许前端访问

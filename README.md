@@ -14,7 +14,7 @@
 
 ### 环境要求
 - Rust nightly 工具链
-- Node.js v24+  (测试过的版本)
+- Node.js 18+（Vite 6 要求；本机实测 v24）
 
 ### 安装步骤
 
@@ -66,8 +66,10 @@ rust-compile-web/
 
 
 访问应用：
-- 前端界面: http://localhost:5173
-- 后端 API: http://localhost:8080
+- 前端界面: http://localhost:5175（`frontend/vite.config.js` 里 `server.port = 5175`，`strictPort`）
+- 后端 API: http://localhost:8080（自己 `cargo run` 时的默认端口）
+
+> 端口说明：后端默认 `8080`（`backend/src/main.rs`，可用 `PORT` 覆盖）；`ProjectAccess` 为避免与 WestChina 网关的 8080 冲突，启动时传 `PORT=18080` 并给前端注入 `VITE_PROXY_TARGET=http://127.0.0.1:18080`。手动开发就按上面的 8080 + 默认代理即可。
 
 ## 部署到 Vercel
 

@@ -92,10 +92,10 @@ cd backend && rustup override set nightly && cargo run
 cd frontend && npm install && npm run dev
 ```
 
-前端：http://127.0.0.1:5173  
-后端：http://127.0.0.1:8080  
+前端：http://127.0.0.1:5175  
+后端：http://127.0.0.1:8080（`ProjectAccess` 编排时为 18080）  
 
-本地无需设置 `VITE_API_BASE_URL`（开发模式直连 8080）。
+本地无需设置 `VITE_API_BASE_URL`（开发模式走 Vite 代理，默认目标 `http://127.0.0.1:8080`，可用 `VITE_PROXY_TARGET` 覆盖；`ProjectAccess` 就是注入 18080）。
 
 ---
 
